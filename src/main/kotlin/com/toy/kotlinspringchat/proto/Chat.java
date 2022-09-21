@@ -15,15 +15,20 @@ public final class Chat {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_toy_kotlinspringchat_proto_Message_descriptor;
+    internal_static_com_toy_kotlinspringchat_proto_MessageProto_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_toy_kotlinspringchat_proto_Message_fieldAccessorTable;
+      internal_static_com_toy_kotlinspringchat_proto_MessageProto_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_toy_kotlinspringchat_proto_User_descriptor;
+    internal_static_com_toy_kotlinspringchat_proto_UserProto_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_toy_kotlinspringchat_proto_User_fieldAccessorTable;
+      internal_static_com_toy_kotlinspringchat_proto_UserProto_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_toy_kotlinspringchat_proto_MessageArrProto_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_com_toy_kotlinspringchat_proto_MessageArrProto_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -34,28 +39,39 @@ public final class Chat {
   static {
     String[] descriptorData = {
       "\n\nchat.proto\022\036com.toy.kotlinspringchat.p" +
-      "roto\"n\n\007Message\022\017\n\007msgType\030\001 \001(\t\022\016\n\004data" +
-      "\030\002 \001(\tH\000\0224\n\004user\030\003 \001(\0132$.com.toy.kotlins" +
-      "pringchat.proto.UserH\000B\014\n\ndata_oneof\" \n\004" +
-      "User\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\tB\002P\001b\006prot" +
-      "o3"
+      "roto\"\263\001\n\014MessageProto\022<\n\007msgType\030\001 \001(\0162+" +
+      ".com.toy.kotlinspringchat.proto.MsgTypeE" +
+      "num\022\016\n\004data\030\002 \001(\tH\000\0229\n\004user\030\003 \001(\0132).com." +
+      "toy.kotlinspringchat.proto.UserProtoH\000\022\014" +
+      "\n\004date\030\004 \001(\003B\014\n\ndata_oneof\"&\n\tUserProto\022" +
+      "\013\n\003idx\030\001 \001(\003\022\014\n\004name\030\002 \001(\t\"P\n\017MessageArr" +
+      "Proto\022=\n\007msgList\030\001 \003(\0132,.com.toy.kotlins" +
+      "pringchat.proto.MessageProto**\n\013MsgTypeE" +
+      "num\022\010\n\004JOIN\020\000\022\010\n\004LEFT\020\001\022\007\n\003SAY\020\002B\002P\001b\006pr" +
+      "oto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         });
-    internal_static_com_toy_kotlinspringchat_proto_Message_descriptor =
+    internal_static_com_toy_kotlinspringchat_proto_MessageProto_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_com_toy_kotlinspringchat_proto_Message_fieldAccessorTable = new
+    internal_static_com_toy_kotlinspringchat_proto_MessageProto_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_toy_kotlinspringchat_proto_Message_descriptor,
-        new String[] { "MsgType", "Data", "User", "DataOneof", });
-    internal_static_com_toy_kotlinspringchat_proto_User_descriptor =
+        internal_static_com_toy_kotlinspringchat_proto_MessageProto_descriptor,
+        new String[] { "MsgType", "Data", "User", "Date", "DataOneof", });
+    internal_static_com_toy_kotlinspringchat_proto_UserProto_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_com_toy_kotlinspringchat_proto_User_fieldAccessorTable = new
+    internal_static_com_toy_kotlinspringchat_proto_UserProto_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_toy_kotlinspringchat_proto_User_descriptor,
-        new String[] { "Id", "Name", });
+        internal_static_com_toy_kotlinspringchat_proto_UserProto_descriptor,
+        new String[] { "Idx", "Name", });
+    internal_static_com_toy_kotlinspringchat_proto_MessageArrProto_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_com_toy_kotlinspringchat_proto_MessageArrProto_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_toy_kotlinspringchat_proto_MessageArrProto_descriptor,
+        new String[] { "MsgList", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

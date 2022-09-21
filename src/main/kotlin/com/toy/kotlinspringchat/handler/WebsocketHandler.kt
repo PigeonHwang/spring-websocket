@@ -1,79 +1,89 @@
 package com.toy.kotlinspringchat.handler
 
-import com.toy.kotlinspringchat.proto.Message
-import com.toy.kotlinspringchat.proto.User
-import com.toy.kotlinspringchat.repository.MessageLogRepository
-import com.toy.kotlinspringchat.service.MessageLogService
-import org.springframework.beans.factory.annotation.Autowired
+import com.toy.kotlinspringchat.model.User
+import com.toy.kotlinspringchat.proto.MessageProto
+import com.toy.kotlinspringchat.proto.MsgTypeEnum
+import com.toy.kotlinspringchat.service.ChatService
 import org.springframework.web.socket.*
 import org.springframework.web.socket.handler.TextWebSocketHandler
 import java.nio.ByteBuffer
-import java.util.concurrent.atomic.AtomicInteger
 
-class WebsocketHandler: TextWebSocketHandler() {
-    @Autowired
-    private lateinit var messageLogRepository: MessageLogRepository
-
+class WebsocketHandler(chatService: ChatService): TextWebSocketHandler() {
     private val sessionList = HashMap<WebSocketSession, User>()
-    private var uids = AtomicInteger(0)
+    private var chatService = chatService
 
     @Throws(Exception::class)
     override fun afterConnectionClosed(session: WebSocketSession, status: CloseStatus) {
-        broadcastToOthers(session, Message.newBuilder().setMsgType("left").setUser(sessionList[session]).build())
-        broadcastToOthers(session, Message.newBuilder().setMsgType("say").setData("[Admin]: " + sessionList[session]?.name + " has left").build())
+        var msg = MessageProto.newBuilder()
+        broadcastToOthers(session, msg.setMsgType(MsgTypeEnum.LEFT).setUser(sessionList[session]?.toProto()).build())
+        broadcastToOthers(session, msg.setMsgType(MsgTypeEnum.SAY).setData("[Admin]: " + sessionList[session]?.userName + " has left").build())
         sessionList -= session
     }
 
     override fun afterConnectionEstablished(session: WebSocketSession) {
-        val user = User.newBuilder()
-        sessionList[session] = user.setId(0).setName("").build()
+        sessionList[session] = User()
     }
 
     override fun handleBinaryMessage(session: WebSocketSession, message: BinaryMessage) {
         var byeBufferMsg = message.payload
-        var protoMsg = Message.parseFrom(byeBufferMsg)
+        var protoMsg = MessageProto.parseFrom(byeBufferMsg)
 
         when (protoMsg.msgType) {
-            "join" -> {
-                val user = User.newBuilder()
-                    .setId(uids.getAndIncrement())
-                    .setName(protoMsg.data)
-                    .build()
+            MsgTypeEnum.JOIN -> {
+                var users = chatService.findUsersByUserName(protoMsg.data)
 
+                var user: User = if(users.isEmpty()) {
+                    chatService.createUser(protoMsg.data)
+                } else {
+                    users[0]
+                }
                 sessionList[session] = user
 
+                println("*****************")
                 sessionList.forEach {
-                    emit(session, Message.newBuilder()
-                        .setMsgType("join")
-                        .setUser(it.value)
-                        .build())
+                    println(it.value.userName + " : " + it.key)
+                }
+                println(user.userName + " : " + session)
+                println("*****************")
+
+                sessionList.forEach {
+                    if(it.value.userName == user.userName && !it.key.equals(session)) {
+                        var s = it.key
+                        s.close()
+                    } else {
+                        println("222")
+                        emit(session, MessageProto.newBuilder()
+                            .setMsgType(MsgTypeEnum.JOIN)
+                            .setUser(it.value.toProto())
+                            .build())
+                    }
                 }
 
-                broadcastToOthers(session, Message.newBuilder()
-                    .setMsgType("join")
-                    .setUser(user)
+                broadcastToOthers(session, MessageProto.newBuilder()
+                    .setMsgType(MsgTypeEnum.JOIN)
+                    .setUser(user.toProto())
                     .build())
 
-                broadcast(Message.newBuilder()
-                    .setMsgType("say").setData("[Admin]: " + user.name + " has joined")
+                broadcast(MessageProto.newBuilder()
+                    .setMsgType(MsgTypeEnum.SAY)
+                    .setData("[Admin]: " + user.userName + " has joined")
                     .build())
             }
-            "say" -> {
-                var msg = Message.newBuilder()
-                    .setMsgType("say")
-                    .setData("[" + sessionList[session]?.name + "]: " + protoMsg.data)
+            MsgTypeEnum.SAY -> {
+                var msg = MessageProto.newBuilder()
+                    .setMsgType(MsgTypeEnum.SAY)
+                    .setData("[" + sessionList[session]?.userName + "]: " + protoMsg.data)
                     .build()
 
-                var message1 = com.toy.kotlinspringchat.model.Message()
-                message1.data = msg.data
-                messageLogRepository.save(message1)
+                chatService.createMessage(msg, sessionList[session]!!)
+
                 broadcast(msg)
             }
         }
     }
 
-    private fun emit(session: WebSocketSession, msg: Message) = session.sendMessage(BinaryMessage(ByteBuffer.wrap(msg.toByteArray())))
-    private fun broadcast(msg: Message) = sessionList.forEach { emit(it.key, msg)}
-    private fun broadcastToOthers(me: WebSocketSession, msg: Message) = sessionList.filterNot { it.key == me }.forEach { emit(it.key, msg) }
+    private fun emit(session: WebSocketSession, msg: MessageProto) = session.sendMessage(BinaryMessage(ByteBuffer.wrap(msg.toByteArray())))
+    private fun broadcast(msg: MessageProto) = sessionList.forEach { emit(it.key, msg)}
+    private fun broadcastToOthers(me: WebSocketSession, msg: MessageProto) = sessionList.filterNot { it.key == me }.forEach { emit(it.key, msg) }
 
 }

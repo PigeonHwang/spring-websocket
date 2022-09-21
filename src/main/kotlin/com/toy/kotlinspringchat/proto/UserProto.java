@@ -4,18 +4,18 @@
 package com.toy.kotlinspringchat.proto;
 
 /**
- * Protobuf type {@code com.toy.kotlinspringchat.proto.User}
+ * Protobuf type {@code com.toy.kotlinspringchat.proto.UserProto}
  */
-public final class User extends
+public final class UserProto extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:com.toy.kotlinspringchat.proto.User)
-    UserOrBuilder {
+    // @@protoc_insertion_point(message_implements:com.toy.kotlinspringchat.proto.UserProto)
+    UserProtoOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use User.newBuilder() to construct.
-  private User(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use UserProto.newBuilder() to construct.
+  private UserProto(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private User() {
+  private UserProto() {
     name_ = "";
   }
 
@@ -23,7 +23,7 @@ private static final long serialVersionUID = 0L;
   @SuppressWarnings({"unused"})
   protected Object newInstance(
       UnusedPrivateParameter unused) {
-    return new User();
+    return new UserProto();
   }
 
   @Override
@@ -31,7 +31,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private User(
+  private UserProto(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -51,7 +51,7 @@ private static final long serialVersionUID = 0L;
             break;
           case 8: {
 
-            id_ = input.readInt32();
+            idx_ = input.readInt64();
             break;
           }
           case 18: {
@@ -83,26 +83,26 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return Chat.internal_static_com_toy_kotlinspringchat_proto_User_descriptor;
+    return Chat.internal_static_com_toy_kotlinspringchat_proto_UserProto_descriptor;
   }
 
   @Override
   protected FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return Chat.internal_static_com_toy_kotlinspringchat_proto_User_fieldAccessorTable
+    return Chat.internal_static_com_toy_kotlinspringchat_proto_UserProto_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            User.class, Builder.class);
+            UserProto.class, Builder.class);
   }
 
-  public static final int ID_FIELD_NUMBER = 1;
-  private int id_;
+  public static final int IDX_FIELD_NUMBER = 1;
+  private long idx_;
   /**
-   * <code>int32 id = 1;</code>
-   * @return The id.
+   * <code>int64 idx = 1;</code>
+   * @return The idx.
    */
   @Override
-  public int getId() {
-    return id_;
+  public long getIdx() {
+    return idx_;
   }
 
   public static final int NAME_FIELD_NUMBER = 2;
@@ -157,8 +157,8 @@ private static final long serialVersionUID = 0L;
   @Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (id_ != 0) {
-      output.writeInt32(1, id_);
+    if (idx_ != 0L) {
+      output.writeInt64(1, idx_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, name_);
@@ -172,9 +172,9 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (id_ != 0) {
+    if (idx_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(1, id_);
+        .computeInt64Size(1, idx_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, name_);
@@ -189,13 +189,13 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof User)) {
+    if (!(obj instanceof UserProto)) {
       return super.equals(obj);
     }
-    User other = (User) obj;
+    UserProto other = (UserProto) obj;
 
-    if (getId()
-        != other.getId()) return false;
+    if (getIdx()
+        != other.getIdx()) return false;
     if (!getName()
         .equals(other.getName())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
@@ -209,8 +209,9 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + ID_FIELD_NUMBER;
-    hash = (53 * hash) + getId();
+    hash = (37 * hash) + IDX_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        getIdx());
     hash = (37 * hash) + NAME_FIELD_NUMBER;
     hash = (53 * hash) + getName().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
@@ -218,69 +219,69 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static User parseFrom(
+  public static UserProto parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static User parseFrom(
+  public static UserProto parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static User parseFrom(
+  public static UserProto parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static User parseFrom(
+  public static UserProto parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static User parseFrom(byte[] data)
+  public static UserProto parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static User parseFrom(
+  public static UserProto parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static User parseFrom(java.io.InputStream input)
+  public static UserProto parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static User parseFrom(
+  public static UserProto parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static User parseDelimitedFrom(java.io.InputStream input)
+  public static UserProto parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static User parseDelimitedFrom(
+  public static UserProto parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static User parseFrom(
+  public static UserProto parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static User parseFrom(
+  public static UserProto parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -293,7 +294,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(User prototype) {
+  public static Builder newBuilder(UserProto prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @Override
@@ -309,26 +310,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code com.toy.kotlinspringchat.proto.User}
+   * Protobuf type {@code com.toy.kotlinspringchat.proto.UserProto}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:com.toy.kotlinspringchat.proto.User)
-      UserOrBuilder {
+      // @@protoc_insertion_point(builder_implements:com.toy.kotlinspringchat.proto.UserProto)
+      UserProtoOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return Chat.internal_static_com_toy_kotlinspringchat_proto_User_descriptor;
+      return Chat.internal_static_com_toy_kotlinspringchat_proto_UserProto_descriptor;
     }
 
     @Override
     protected FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return Chat.internal_static_com_toy_kotlinspringchat_proto_User_fieldAccessorTable
+      return Chat.internal_static_com_toy_kotlinspringchat_proto_UserProto_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              User.class, Builder.class);
+              UserProto.class, Builder.class);
     }
 
-    // Construct using com.toy.kotlinspringchat.proto.User.newBuilder()
+    // Construct using com.toy.kotlinspringchat.proto.UserProto.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -346,7 +347,7 @@ private static final long serialVersionUID = 0L;
     @Override
     public Builder clear() {
       super.clear();
-      id_ = 0;
+      idx_ = 0L;
 
       name_ = "";
 
@@ -356,17 +357,17 @@ private static final long serialVersionUID = 0L;
     @Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return Chat.internal_static_com_toy_kotlinspringchat_proto_User_descriptor;
+      return Chat.internal_static_com_toy_kotlinspringchat_proto_UserProto_descriptor;
     }
 
     @Override
-    public User getDefaultInstanceForType() {
-      return User.getDefaultInstance();
+    public UserProto getDefaultInstanceForType() {
+      return UserProto.getDefaultInstance();
     }
 
     @Override
-    public User build() {
-      User result = buildPartial();
+    public UserProto build() {
+      UserProto result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -374,9 +375,9 @@ private static final long serialVersionUID = 0L;
     }
 
     @Override
-    public User buildPartial() {
-      User result = new User(this);
-      result.id_ = id_;
+    public UserProto buildPartial() {
+      UserProto result = new UserProto(this);
+      result.idx_ = idx_;
       result.name_ = name_;
       onBuilt();
       return result;
@@ -416,18 +417,18 @@ private static final long serialVersionUID = 0L;
     }
     @Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof User) {
-        return mergeFrom((User)other);
+      if (other instanceof UserProto) {
+        return mergeFrom((UserProto)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(User other) {
-      if (other == User.getDefaultInstance()) return this;
-      if (other.getId() != 0) {
-        setId(other.getId());
+    public Builder mergeFrom(UserProto other) {
+      if (other == UserProto.getDefaultInstance()) return this;
+      if (other.getIdx() != 0L) {
+        setIdx(other.getIdx());
       }
       if (!other.getName().isEmpty()) {
         name_ = other.name_;
@@ -448,11 +449,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      User parsedMessage = null;
+      UserProto parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (User) e.getUnfinishedMessage();
+        parsedMessage = (UserProto) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -462,33 +463,33 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int id_ ;
+    private long idx_ ;
     /**
-     * <code>int32 id = 1;</code>
-     * @return The id.
+     * <code>int64 idx = 1;</code>
+     * @return The idx.
      */
     @Override
-    public int getId() {
-      return id_;
+    public long getIdx() {
+      return idx_;
     }
     /**
-     * <code>int32 id = 1;</code>
-     * @param value The id to set.
+     * <code>int64 idx = 1;</code>
+     * @param value The idx to set.
      * @return This builder for chaining.
      */
-    public Builder setId(int value) {
+    public Builder setIdx(long value) {
       
-      id_ = value;
+      idx_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>int32 id = 1;</code>
+     * <code>int64 idx = 1;</code>
      * @return This builder for chaining.
      */
-    public Builder clearId() {
+    public Builder clearIdx() {
       
-      id_ = 0;
+      idx_ = 0L;
       onChanged();
       return this;
     }
@@ -581,41 +582,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:com.toy.kotlinspringchat.proto.User)
+    // @@protoc_insertion_point(builder_scope:com.toy.kotlinspringchat.proto.UserProto)
   }
 
-  // @@protoc_insertion_point(class_scope:com.toy.kotlinspringchat.proto.User)
-  private static final User DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:com.toy.kotlinspringchat.proto.UserProto)
+  private static final UserProto DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new User();
+    DEFAULT_INSTANCE = new UserProto();
   }
 
-  public static User getDefaultInstance() {
+  public static UserProto getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<User>
-      PARSER = new com.google.protobuf.AbstractParser<User>() {
+  private static final com.google.protobuf.Parser<UserProto>
+      PARSER = new com.google.protobuf.AbstractParser<UserProto>() {
     @Override
-    public User parsePartialFrom(
+    public UserProto parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new User(input, extensionRegistry);
+      return new UserProto(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<User> parser() {
+  public static com.google.protobuf.Parser<UserProto> parser() {
     return PARSER;
   }
 
   @Override
-  public com.google.protobuf.Parser<User> getParserForType() {
+  public com.google.protobuf.Parser<UserProto> getParserForType() {
     return PARSER;
   }
 
   @Override
-  public User getDefaultInstanceForType() {
+  public UserProto getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

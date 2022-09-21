@@ -3,15 +3,15 @@
 
 package com.toy.kotlinspringchat.proto;
 
-public interface UserOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:com.toy.kotlinspringchat.proto.User)
+public interface UserProtoOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:com.toy.kotlinspringchat.proto.UserProto)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int32 id = 1;</code>
-   * @return The id.
+   * <code>int64 idx = 1;</code>
+   * @return The idx.
    */
-  int getId();
+  long getIdx();
 
   /**
    * <code>string name = 2;</code>

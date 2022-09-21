@@ -4,26 +4,26 @@
 package com.toy.kotlinspringchat.proto;
 
 /**
- * Protobuf type {@code com.toy.kotlinspringchat.proto.Message}
+ * Protobuf type {@code com.toy.kotlinspringchat.proto.MessageProto}
  */
-public final class Message extends
+public final class MessageProto extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:com.toy.kotlinspringchat.proto.Message)
-    MessageOrBuilder {
+    // @@protoc_insertion_point(message_implements:com.toy.kotlinspringchat.proto.MessageProto)
+    MessageProtoOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use Message.newBuilder() to construct.
-  private Message(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use MessageProto.newBuilder() to construct.
+  private MessageProto(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private Message() {
-    msgType_ = "";
+  private MessageProto() {
+    msgType_ = 0;
   }
 
   @Override
   @SuppressWarnings({"unused"})
   protected Object newInstance(
       UnusedPrivateParameter unused) {
-    return new Message();
+    return new MessageProto();
   }
 
   @Override
@@ -31,7 +31,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private Message(
+  private MessageProto(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -49,10 +49,10 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 10: {
-            String s = input.readStringRequireUtf8();
+          case 8: {
+            int rawValue = input.readEnum();
 
-            msgType_ = s;
+            msgType_ = rawValue;
             break;
           }
           case 18: {
@@ -62,17 +62,22 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 26: {
-            User.Builder subBuilder = null;
+            UserProto.Builder subBuilder = null;
             if (dataOneofCase_ == 3) {
-              subBuilder = ((User) dataOneof_).toBuilder();
+              subBuilder = ((UserProto) dataOneof_).toBuilder();
             }
             dataOneof_ =
-                input.readMessage(User.parser(), extensionRegistry);
+                input.readMessage(UserProto.parser(), extensionRegistry);
             if (subBuilder != null) {
-              subBuilder.mergeFrom((User) dataOneof_);
+              subBuilder.mergeFrom((UserProto) dataOneof_);
               dataOneof_ = subBuilder.buildPartial();
             }
             dataOneofCase_ = 3;
+            break;
+          }
+          case 32: {
+
+            date_ = input.readInt64();
             break;
           }
           default: {
@@ -98,15 +103,15 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return Chat.internal_static_com_toy_kotlinspringchat_proto_Message_descriptor;
+    return Chat.internal_static_com_toy_kotlinspringchat_proto_MessageProto_descriptor;
   }
 
   @Override
   protected FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return Chat.internal_static_com_toy_kotlinspringchat_proto_Message_fieldAccessorTable
+    return Chat.internal_static_com_toy_kotlinspringchat_proto_MessageProto_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            Message.class, Builder.class);
+            MessageProto.class, Builder.class);
   }
 
   private int dataOneofCase_ = 0;
@@ -151,41 +156,22 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int MSGTYPE_FIELD_NUMBER = 1;
-  private volatile Object msgType_;
+  private int msgType_;
   /**
-   * <code>string msgType = 1;</code>
-   * @return The msgType.
+   * <code>.com.toy.kotlinspringchat.proto.MsgTypeEnum msgType = 1;</code>
+   * @return The enum numeric value on the wire for msgType.
    */
-  @Override
-  public String getMsgType() {
-    Object ref = msgType_;
-    if (ref instanceof String) {
-      return (String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      String s = bs.toStringUtf8();
-      msgType_ = s;
-      return s;
-    }
+  @Override public int getMsgTypeValue() {
+    return msgType_;
   }
   /**
-   * <code>string msgType = 1;</code>
-   * @return The bytes for msgType.
+   * <code>.com.toy.kotlinspringchat.proto.MsgTypeEnum msgType = 1;</code>
+   * @return The msgType.
    */
-  @Override
-  public com.google.protobuf.ByteString
-      getMsgTypeBytes() {
-    Object ref = msgType_;
-    if (ref instanceof String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (String) ref);
-      msgType_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
+  @Override public MsgTypeEnum getMsgType() {
+    @SuppressWarnings("deprecation")
+    MsgTypeEnum result = MsgTypeEnum.valueOf(msgType_);
+    return result == null ? MsgTypeEnum.UNRECOGNIZED : result;
   }
 
   public static final int DATA_FIELD_NUMBER = 2;
@@ -242,7 +228,7 @@ private static final long serialVersionUID = 0L;
 
   public static final int USER_FIELD_NUMBER = 3;
   /**
-   * <code>.com.toy.kotlinspringchat.proto.User user = 3;</code>
+   * <code>.com.toy.kotlinspringchat.proto.UserProto user = 3;</code>
    * @return Whether the user field is set.
    */
   @Override
@@ -250,25 +236,36 @@ private static final long serialVersionUID = 0L;
     return dataOneofCase_ == 3;
   }
   /**
-   * <code>.com.toy.kotlinspringchat.proto.User user = 3;</code>
+   * <code>.com.toy.kotlinspringchat.proto.UserProto user = 3;</code>
    * @return The user.
    */
   @Override
-  public User getUser() {
+  public UserProto getUser() {
     if (dataOneofCase_ == 3) {
-       return (User) dataOneof_;
+       return (UserProto) dataOneof_;
     }
-    return User.getDefaultInstance();
+    return UserProto.getDefaultInstance();
   }
   /**
-   * <code>.com.toy.kotlinspringchat.proto.User user = 3;</code>
+   * <code>.com.toy.kotlinspringchat.proto.UserProto user = 3;</code>
    */
   @Override
-  public UserOrBuilder getUserOrBuilder() {
+  public UserProtoOrBuilder getUserOrBuilder() {
     if (dataOneofCase_ == 3) {
-       return (User) dataOneof_;
+       return (UserProto) dataOneof_;
     }
-    return User.getDefaultInstance();
+    return UserProto.getDefaultInstance();
+  }
+
+  public static final int DATE_FIELD_NUMBER = 4;
+  private long date_;
+  /**
+   * <code>int64 date = 4;</code>
+   * @return The date.
+   */
+  @Override
+  public long getDate() {
+    return date_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -285,14 +282,17 @@ private static final long serialVersionUID = 0L;
   @Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(msgType_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, msgType_);
+    if (msgType_ != MsgTypeEnum.JOIN.getNumber()) {
+      output.writeEnum(1, msgType_);
     }
     if (dataOneofCase_ == 2) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, dataOneof_);
     }
     if (dataOneofCase_ == 3) {
-      output.writeMessage(3, (User) dataOneof_);
+      output.writeMessage(3, (UserProto) dataOneof_);
+    }
+    if (date_ != 0L) {
+      output.writeInt64(4, date_);
     }
     unknownFields.writeTo(output);
   }
@@ -303,15 +303,20 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(msgType_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, msgType_);
+    if (msgType_ != MsgTypeEnum.JOIN.getNumber()) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeEnumSize(1, msgType_);
     }
     if (dataOneofCase_ == 2) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, dataOneof_);
     }
     if (dataOneofCase_ == 3) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(3, (User) dataOneof_);
+        .computeMessageSize(3, (UserProto) dataOneof_);
+    }
+    if (date_ != 0L) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt64Size(4, date_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -323,13 +328,14 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof Message)) {
+    if (!(obj instanceof MessageProto)) {
       return super.equals(obj);
     }
-    Message other = (Message) obj;
+    MessageProto other = (MessageProto) obj;
 
-    if (!getMsgType()
-        .equals(other.getMsgType())) return false;
+    if (msgType_ != other.msgType_) return false;
+    if (getDate()
+        != other.getDate()) return false;
     if (!getDataOneofCase().equals(other.getDataOneofCase())) return false;
     switch (dataOneofCase_) {
       case 2:
@@ -355,7 +361,10 @@ private static final long serialVersionUID = 0L;
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + MSGTYPE_FIELD_NUMBER;
-    hash = (53 * hash) + getMsgType().hashCode();
+    hash = (53 * hash) + msgType_;
+    hash = (37 * hash) + DATE_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        getDate());
     switch (dataOneofCase_) {
       case 2:
         hash = (37 * hash) + DATA_FIELD_NUMBER;
@@ -373,69 +382,69 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static Message parseFrom(
+  public static MessageProto parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static Message parseFrom(
+  public static MessageProto parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static Message parseFrom(
+  public static MessageProto parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static Message parseFrom(
+  public static MessageProto parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static Message parseFrom(byte[] data)
+  public static MessageProto parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static Message parseFrom(
+  public static MessageProto parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static Message parseFrom(java.io.InputStream input)
+  public static MessageProto parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static Message parseFrom(
+  public static MessageProto parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static Message parseDelimitedFrom(java.io.InputStream input)
+  public static MessageProto parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static Message parseDelimitedFrom(
+  public static MessageProto parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static Message parseFrom(
+  public static MessageProto parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static Message parseFrom(
+  public static MessageProto parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -448,7 +457,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(Message prototype) {
+  public static Builder newBuilder(MessageProto prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @Override
@@ -464,26 +473,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code com.toy.kotlinspringchat.proto.Message}
+   * Protobuf type {@code com.toy.kotlinspringchat.proto.MessageProto}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:com.toy.kotlinspringchat.proto.Message)
-      MessageOrBuilder {
+      // @@protoc_insertion_point(builder_implements:com.toy.kotlinspringchat.proto.MessageProto)
+      MessageProtoOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return Chat.internal_static_com_toy_kotlinspringchat_proto_Message_descriptor;
+      return Chat.internal_static_com_toy_kotlinspringchat_proto_MessageProto_descriptor;
     }
 
     @Override
     protected FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return Chat.internal_static_com_toy_kotlinspringchat_proto_Message_fieldAccessorTable
+      return Chat.internal_static_com_toy_kotlinspringchat_proto_MessageProto_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              Message.class, Builder.class);
+              MessageProto.class, Builder.class);
     }
 
-    // Construct using com.toy.kotlinspringchat.proto.Message.newBuilder()
+    // Construct using com.toy.kotlinspringchat.proto.MessageProto.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -501,7 +510,9 @@ private static final long serialVersionUID = 0L;
     @Override
     public Builder clear() {
       super.clear();
-      msgType_ = "";
+      msgType_ = 0;
+
+      date_ = 0L;
 
       dataOneofCase_ = 0;
       dataOneof_ = null;
@@ -511,17 +522,17 @@ private static final long serialVersionUID = 0L;
     @Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return Chat.internal_static_com_toy_kotlinspringchat_proto_Message_descriptor;
+      return Chat.internal_static_com_toy_kotlinspringchat_proto_MessageProto_descriptor;
     }
 
     @Override
-    public Message getDefaultInstanceForType() {
-      return Message.getDefaultInstance();
+    public MessageProto getDefaultInstanceForType() {
+      return MessageProto.getDefaultInstance();
     }
 
     @Override
-    public Message build() {
-      Message result = buildPartial();
+    public MessageProto build() {
+      MessageProto result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -529,8 +540,8 @@ private static final long serialVersionUID = 0L;
     }
 
     @Override
-    public Message buildPartial() {
-      Message result = new Message(this);
+    public MessageProto buildPartial() {
+      MessageProto result = new MessageProto(this);
       result.msgType_ = msgType_;
       if (dataOneofCase_ == 2) {
         result.dataOneof_ = dataOneof_;
@@ -542,6 +553,7 @@ private static final long serialVersionUID = 0L;
           result.dataOneof_ = userBuilder_.build();
         }
       }
+      result.date_ = date_;
       result.dataOneofCase_ = dataOneofCase_;
       onBuilt();
       return result;
@@ -581,19 +593,21 @@ private static final long serialVersionUID = 0L;
     }
     @Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof Message) {
-        return mergeFrom((Message)other);
+      if (other instanceof MessageProto) {
+        return mergeFrom((MessageProto)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(Message other) {
-      if (other == Message.getDefaultInstance()) return this;
-      if (!other.getMsgType().isEmpty()) {
-        msgType_ = other.msgType_;
-        onChanged();
+    public Builder mergeFrom(MessageProto other) {
+      if (other == MessageProto.getDefaultInstance()) return this;
+      if (other.msgType_ != 0) {
+        setMsgTypeValue(other.getMsgTypeValue());
+      }
+      if (other.getDate() != 0L) {
+        setDate(other.getDate());
       }
       switch (other.getDataOneofCase()) {
         case DATA: {
@@ -625,11 +639,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      Message parsedMessage = null;
+      MessageProto parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (Message) e.getUnfinishedMessage();
+        parsedMessage = (MessageProto) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -654,78 +668,56 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    private Object msgType_ = "";
+    private int msgType_ = 0;
     /**
-     * <code>string msgType = 1;</code>
-     * @return The msgType.
+     * <code>.com.toy.kotlinspringchat.proto.MsgTypeEnum msgType = 1;</code>
+     * @return The enum numeric value on the wire for msgType.
      */
-    public String getMsgType() {
-      Object ref = msgType_;
-      if (!(ref instanceof String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        msgType_ = s;
-        return s;
-      } else {
-        return (String) ref;
-      }
+    @Override public int getMsgTypeValue() {
+      return msgType_;
     }
     /**
-     * <code>string msgType = 1;</code>
-     * @return The bytes for msgType.
-     */
-    public com.google.protobuf.ByteString
-        getMsgTypeBytes() {
-      Object ref = msgType_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (String) ref);
-        msgType_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string msgType = 1;</code>
-     * @param value The msgType to set.
+     * <code>.com.toy.kotlinspringchat.proto.MsgTypeEnum msgType = 1;</code>
+     * @param value The enum numeric value on the wire for msgType to set.
      * @return This builder for chaining.
      */
-    public Builder setMsgType(
-        String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
+    public Builder setMsgTypeValue(int value) {
+      
       msgType_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string msgType = 1;</code>
+     * <code>.com.toy.kotlinspringchat.proto.MsgTypeEnum msgType = 1;</code>
+     * @return The msgType.
+     */
+    @Override
+    public MsgTypeEnum getMsgType() {
+      @SuppressWarnings("deprecation")
+      MsgTypeEnum result = MsgTypeEnum.valueOf(msgType_);
+      return result == null ? MsgTypeEnum.UNRECOGNIZED : result;
+    }
+    /**
+     * <code>.com.toy.kotlinspringchat.proto.MsgTypeEnum msgType = 1;</code>
+     * @param value The msgType to set.
+     * @return This builder for chaining.
+     */
+    public Builder setMsgType(MsgTypeEnum value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      
+      msgType_ = value.getNumber();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.com.toy.kotlinspringchat.proto.MsgTypeEnum msgType = 1;</code>
      * @return This builder for chaining.
      */
     public Builder clearMsgType() {
       
-      msgType_ = getDefaultInstance().getMsgType();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string msgType = 1;</code>
-     * @param value The bytes for msgType to set.
-     * @return This builder for chaining.
-     */
-    public Builder setMsgTypeBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      msgType_ = value;
+      msgType_ = 0;
       onChanged();
       return this;
     }
@@ -828,9 +820,9 @@ private static final long serialVersionUID = 0L;
     }
 
     private com.google.protobuf.SingleFieldBuilderV3<
-        User, User.Builder, UserOrBuilder> userBuilder_;
+        UserProto, UserProto.Builder, UserProtoOrBuilder> userBuilder_;
     /**
-     * <code>.com.toy.kotlinspringchat.proto.User user = 3;</code>
+     * <code>.com.toy.kotlinspringchat.proto.UserProto user = 3;</code>
      * @return Whether the user field is set.
      */
     @Override
@@ -838,27 +830,27 @@ private static final long serialVersionUID = 0L;
       return dataOneofCase_ == 3;
     }
     /**
-     * <code>.com.toy.kotlinspringchat.proto.User user = 3;</code>
+     * <code>.com.toy.kotlinspringchat.proto.UserProto user = 3;</code>
      * @return The user.
      */
     @Override
-    public User getUser() {
+    public UserProto getUser() {
       if (userBuilder_ == null) {
         if (dataOneofCase_ == 3) {
-          return (User) dataOneof_;
+          return (UserProto) dataOneof_;
         }
-        return User.getDefaultInstance();
+        return UserProto.getDefaultInstance();
       } else {
         if (dataOneofCase_ == 3) {
           return userBuilder_.getMessage();
         }
-        return User.getDefaultInstance();
+        return UserProto.getDefaultInstance();
       }
     }
     /**
-     * <code>.com.toy.kotlinspringchat.proto.User user = 3;</code>
+     * <code>.com.toy.kotlinspringchat.proto.UserProto user = 3;</code>
      */
-    public Builder setUser(User value) {
+    public Builder setUser(UserProto value) {
       if (userBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -872,10 +864,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.com.toy.kotlinspringchat.proto.User user = 3;</code>
+     * <code>.com.toy.kotlinspringchat.proto.UserProto user = 3;</code>
      */
     public Builder setUser(
-        User.Builder builderForValue) {
+        UserProto.Builder builderForValue) {
       if (userBuilder_ == null) {
         dataOneof_ = builderForValue.build();
         onChanged();
@@ -886,13 +878,13 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.com.toy.kotlinspringchat.proto.User user = 3;</code>
+     * <code>.com.toy.kotlinspringchat.proto.UserProto user = 3;</code>
      */
-    public Builder mergeUser(User value) {
+    public Builder mergeUser(UserProto value) {
       if (userBuilder_ == null) {
         if (dataOneofCase_ == 3 &&
-            dataOneof_ != User.getDefaultInstance()) {
-          dataOneof_ = User.newBuilder((User) dataOneof_)
+            dataOneof_ != UserProto.getDefaultInstance()) {
+          dataOneof_ = UserProto.newBuilder((UserProto) dataOneof_)
               .mergeFrom(value).buildPartial();
         } else {
           dataOneof_ = value;
@@ -909,7 +901,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.com.toy.kotlinspringchat.proto.User user = 3;</code>
+     * <code>.com.toy.kotlinspringchat.proto.UserProto user = 3;</code>
      */
     public Builder clearUser() {
       if (userBuilder_ == null) {
@@ -928,38 +920,38 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.com.toy.kotlinspringchat.proto.User user = 3;</code>
+     * <code>.com.toy.kotlinspringchat.proto.UserProto user = 3;</code>
      */
-    public User.Builder getUserBuilder() {
+    public UserProto.Builder getUserBuilder() {
       return getUserFieldBuilder().getBuilder();
     }
     /**
-     * <code>.com.toy.kotlinspringchat.proto.User user = 3;</code>
+     * <code>.com.toy.kotlinspringchat.proto.UserProto user = 3;</code>
      */
     @Override
-    public UserOrBuilder getUserOrBuilder() {
+    public UserProtoOrBuilder getUserOrBuilder() {
       if ((dataOneofCase_ == 3) && (userBuilder_ != null)) {
         return userBuilder_.getMessageOrBuilder();
       } else {
         if (dataOneofCase_ == 3) {
-          return (User) dataOneof_;
+          return (UserProto) dataOneof_;
         }
-        return User.getDefaultInstance();
+        return UserProto.getDefaultInstance();
       }
     }
     /**
-     * <code>.com.toy.kotlinspringchat.proto.User user = 3;</code>
+     * <code>.com.toy.kotlinspringchat.proto.UserProto user = 3;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        User, User.Builder, UserOrBuilder>
+        UserProto, UserProto.Builder, UserProtoOrBuilder>
         getUserFieldBuilder() {
       if (userBuilder_ == null) {
         if (!(dataOneofCase_ == 3)) {
-          dataOneof_ = User.getDefaultInstance();
+          dataOneof_ = UserProto.getDefaultInstance();
         }
         userBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            User, User.Builder, UserOrBuilder>(
-                (User) dataOneof_,
+            UserProto, UserProto.Builder, UserProtoOrBuilder>(
+                (UserProto) dataOneof_,
                 getParentForChildren(),
                 isClean());
         dataOneof_ = null;
@@ -967,6 +959,37 @@ private static final long serialVersionUID = 0L;
       dataOneofCase_ = 3;
       onChanged();;
       return userBuilder_;
+    }
+
+    private long date_ ;
+    /**
+     * <code>int64 date = 4;</code>
+     * @return The date.
+     */
+    @Override
+    public long getDate() {
+      return date_;
+    }
+    /**
+     * <code>int64 date = 4;</code>
+     * @param value The date to set.
+     * @return This builder for chaining.
+     */
+    public Builder setDate(long value) {
+      
+      date_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int64 date = 4;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearDate() {
+      
+      date_ = 0L;
+      onChanged();
+      return this;
     }
     @Override
     public final Builder setUnknownFields(
@@ -981,41 +1004,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:com.toy.kotlinspringchat.proto.Message)
+    // @@protoc_insertion_point(builder_scope:com.toy.kotlinspringchat.proto.MessageProto)
   }
 
-  // @@protoc_insertion_point(class_scope:com.toy.kotlinspringchat.proto.Message)
-  private static final Message DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:com.toy.kotlinspringchat.proto.MessageProto)
+  private static final MessageProto DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new Message();
+    DEFAULT_INSTANCE = new MessageProto();
   }
 
-  public static Message getDefaultInstance() {
+  public static MessageProto getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<Message>
-      PARSER = new com.google.protobuf.AbstractParser<Message>() {
+  private static final com.google.protobuf.Parser<MessageProto>
+      PARSER = new com.google.protobuf.AbstractParser<MessageProto>() {
     @Override
-    public Message parsePartialFrom(
+    public MessageProto parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new Message(input, extensionRegistry);
+      return new MessageProto(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<Message> parser() {
+  public static com.google.protobuf.Parser<MessageProto> parser() {
     return PARSER;
   }
 
   @Override
-  public com.google.protobuf.Parser<Message> getParserForType() {
+  public com.google.protobuf.Parser<MessageProto> getParserForType() {
     return PARSER;
   }
 
   @Override
-  public Message getDefaultInstanceForType() {
+  public MessageProto getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 
