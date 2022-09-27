@@ -1,15 +1,18 @@
-// import protobuf, {util} from 'protobufjs';
-import { Message, User } from './chat';
+// import protobuf, {util} from "protobufjs";
+import {MessageProto, MsgTypeEnum} from "./chat";
 import {types} from "protobufjs";
-import defaults = types.defaults;
-import $ from 'jquery'
+import {Stomp} from "@stomp/stompjs";
 // import Sockjs from 'sockjs-client';
 
+const wsClient = new WebSocket("ws://localhost:8080/ws")
+const stompClient = Stomp.over(wsClient)
 
-const client = new WebSocket('ws://localhost:3000/chatproto')
+stompClient.connect({}, function () {
+    console.log(stompClient)
+    stompClient.send("/app/join", {}, MessageProto.encode({msgType: MsgTypeEnum.JOIN, data: "123123", user: undefined, date: 0}).finish().toString())
+})
 
-client.onmessage = async (ev) => {
-    // console.log(Message.decode(new Uint8Array(await ev.data.arrayBuffer())))
+/*client.onmessage = async (ev) => {
     receiveMsg(Message.decode(new Uint8Array(await ev.data.arrayBuffer())));
 }
 
@@ -22,20 +25,6 @@ client.onopen = () => {
     while (name == "") { // @ts-ignore
         name = prompt("Enter your name");
     }
-    sendMessage("join", name);
-    /*const data = Message.encode({ msgType: "join", data: "pigeon" }).finish();
-    client.send(data);
-    const data2 = Message.encode({ msgType: "say", data: "Hi eichi i~" }).finish();
-    client.send(data2);*/
-
-    /*setInterval(() => {
-        client.send(data)
-    }, 1000);*/
-    /*const data = JSON.stringify({type: "join", data: "hello"})
-
-    setInterval(() => {
-        client.send(data)
-    }, 1000);*/
 }
 
 $("#send").click(function (){
@@ -70,4 +59,4 @@ function receiveMsg(msg: Message) {
 
 function addUser(user: User | undefined) {
     $("#userlist").append("<li id='user"+user?.id+"'>"+user?.name+"</li>");
-}
+}*/
