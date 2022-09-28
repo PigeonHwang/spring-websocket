@@ -25,8 +25,8 @@ class WebsocketHandler(chatService: ChatService): TextWebSocketHandler() {
     }
 
     override fun handleBinaryMessage(session: WebSocketSession, message: BinaryMessage) {
-        var byeBufferMsg = message.payload
-        var protoMsg = MessageProto.parseFrom(byeBufferMsg)
+        var byteBufferMsg = message.payload
+        var protoMsg = MessageProto.parseFrom(byteBufferMsg)
 
         when (protoMsg.msgType) {
             MsgTypeEnum.JOIN -> {

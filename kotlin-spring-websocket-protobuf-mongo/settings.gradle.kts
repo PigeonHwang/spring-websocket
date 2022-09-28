@@ -1,1 +1,1 @@
-rootProject.name = "kotlin-spring-chat"
+rootProject.name = "kotlin-spring-websocket-protobuf-mongo"

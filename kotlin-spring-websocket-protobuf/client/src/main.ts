@@ -6,10 +6,9 @@ import $ from 'jquery'
 // import Sockjs from 'sockjs-client';
 
 
-const client = new WebSocket('ws://localhost:3000/chatproto')
+const client = new WebSocket('ws://localhost:8080/chatproto')
 
 client.onmessage = async (ev) => {
-    // console.log(Message.decode(new Uint8Array(await ev.data.arrayBuffer())))
     receiveMsg(Message.decode(new Uint8Array(await ev.data.arrayBuffer())));
 }
 
@@ -23,19 +22,6 @@ client.onopen = () => {
         name = prompt("Enter your name");
     }
     sendMessage("join", name);
-    /*const data = Message.encode({ msgType: "join", data: "pigeon" }).finish();
-    client.send(data);
-    const data2 = Message.encode({ msgType: "say", data: "Hi eichi i~" }).finish();
-    client.send(data2);*/
-
-    /*setInterval(() => {
-        client.send(data)
-    }, 1000);*/
-    /*const data = JSON.stringify({type: "join", data: "hello"})
-
-    setInterval(() => {
-        client.send(data)
-    }, 1000);*/
 }
 
 $("#send").click(function (){
@@ -47,7 +33,6 @@ $("#msg").keypress(function(e) {
 });
 
 function sendMessage(type: string, date: string) {
-    console.log("1231231");
     if(date != "") {
         client.send(Message.encode({ msgType: type, data: date, user: undefined }).finish());
         (<HTMLInputElement>document.getElementById("msg")).value = "";
@@ -56,7 +41,6 @@ function sendMessage(type: string, date: string) {
 }
 
 function receiveMsg(msg: Message) {
-    console.log(msg);
     if (msg.msgType == "say") {
         $("#chatbox").append("<p>" + msg.data + "</p>");
     }
