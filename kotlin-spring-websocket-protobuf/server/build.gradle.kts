@@ -39,6 +39,8 @@ dependencies {
     implementation("io.grpc:grpc-stub:${grpcVersion}") // CURRENT_GRPC_VERSION
     implementation("io.grpc:grpc-protobuf:$grpcVersion")
 
+    // coroutine
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }

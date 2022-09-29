@@ -21,6 +21,7 @@ client.onopen = () => {
         name = prompt("Enter your name");
     }
     sendMessage(MsgTypeEnum.JOIN, name);
+
     /*const data = Message.encode({ msgType: "join", data: "pigeon" }).finish();
     client.send(data);
     const data2 = Message.encode({ msgType: "say", data: "Hi eichi i~" }).finish();

@@ -5,11 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fab69c01-76cb-4fde-bdff-78e7e0da4b04" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../kotlin-spring-websocket-protobuf-mongo/client/vite.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../kotlin-spring-websocket-protobuf-mongo/client/vite.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../kotlin-spring-websocket-protobuf-mongo/settings.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/../../kotlin-spring-websocket-protobuf-mongo/settings.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kotlin-spring-websocket-protobuf-mongo/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/../../kotlin-spring-websocket-protobuf-mongo/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kotlin-spring-websocket-protobuf-mongo/client/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../kotlin-spring-websocket-protobuf-mongo/client/src/main.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../kotlin-spring-websocket-protobuf-mongo/src/main/kotlin/com/toy/kotlinspringchat/handler/WebsocketHandler.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../kotlin-spring-websocket-protobuf-mongo/src/main/kotlin/com/toy/kotlinspringchat/handler/WebsocketHandler.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/example/demo/WsHandler.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/demo/WsHandler.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,24 +67,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/hwangjong-in/Documents/GitHub/spring-websocket/kotlin-spring-websocket-protobuf/server/src/main/kotlin/com/example/proto",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
-    "spring.configuration.checksum": "9de0862494cc3aa211be7c76dc6b547b"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/hwangjong-in/Documents/GitHub/spring-websocket/kotlin-spring-websocket-protobuf/server&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;9de0862494cc3aa211be7c76dc6b547b&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/kotlin/com/example/proto" />
@@ -98,7 +100,7 @@
       <recent name="com.example.model" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.KotlinSpringWebsocketProtobufApplication">
+  <component name="RunManager" selected="Docker.Dockerfile">
     <configuration name="kotlin-spring-websocket-protobuf [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -148,8 +150,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="sourceFilePath" value="Dockerfile" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Docker.Dockerfile" />
         <item itemvalue="Gradle.kotlin-spring-websocket-protobuf [generateProto]" />
         <item itemvalue="Gradle.kotlin-spring-websocket-protobuf [build]" />
       </list>
@@ -183,6 +194,8 @@
       <workItem from="1663810993166" duration="7000" />
       <workItem from="1663811055581" duration="3000" />
       <workItem from="1663824240667" duration="634000" />
+      <workItem from="1664413266994" duration="1426000" />
+      <workItem from="1664414706228" duration="3588000" />
     </task>
     <servers />
   </component>

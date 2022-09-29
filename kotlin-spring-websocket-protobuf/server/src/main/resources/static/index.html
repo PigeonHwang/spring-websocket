@@ -38,19 +38,7 @@
     </div>
 </div>
 
-<script type="chat" src="proto/chat_pb.js"></script>
 <script>
-    /*import Message from "./proto/chat_pb.js"
-    //import protobuf from 'protobufjs'
-
-    let message = new Message.message();*/
-
-    //var webSocket = new WebSocket("ws://" + location.hostname + ":" + location.port + "/chat");
-
-    let msg = new chat.message();
-    let dir = window.location.pathname;
-    console.log(dir);
-
     const webSocket = new WebSocket('ws://localhost:8080/chat');
 
     webSocket.onmessage = function (msg) { receievMsg(JSON.parse(msg.data)) }
@@ -70,7 +58,6 @@
     function sendMessage(type, data) {
         if (data !== "") {
             webSocket.send(JSON.stringify({type: type, data: data}));
-            //webSocket.send("[B@21123502")
             $("#msg").val("");
             $("#msg").focus();
         }
@@ -86,6 +73,7 @@
             msg.data.forEach(function(el) { addUser(el); });
         }
         else if (msg.msgType == "left") {
+            console.log(msg.data.id)
             $("#user-"+msg.data.id).remove();
         }
     }
